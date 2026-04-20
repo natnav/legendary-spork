@@ -1,2 +1,3 @@
 # legendary-spork
-First React App
+
+This is an example project that is built with AI.
