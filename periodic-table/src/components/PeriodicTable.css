@@ -1,0 +1,217 @@
+.periodic-table-container {
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.controls {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 24px;
+  justify-content: center;
+}
+
+.search-input,
+.filter-select {
+  padding: 10px 16px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-input:focus,
+.filter-select:focus {
+  border-color: #4a90d9;
+}
+
+.periodic-table {
+  display: grid;
+  grid-template-columns: repeat(18, minmax(50px, 1fr));
+  grid-template-rows: repeat(10, auto);
+  gap: 4px;
+  overflow-x: auto;
+  padding: 10px;
+}
+
+.element {
+  aspect-ratio: 1;
+  min-width: 50px;
+  min-height: 50px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: transform 0.15s, box-shadow 0.15s;
+  position: relative;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.15);
+}
+
+.element:hover {
+  transform: scale(1.1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+  z-index: 10;
+}
+
+.element.selected {
+  outline: 3px solid #333;
+  outline-offset: 2px;
+}
+
+.element.dimmed {
+  opacity: 0.3;
+}
+
+.atomic-number {
+  font-size: 9px;
+  font-weight: 600;
+  position: absolute;
+  top: 3px;
+  left: 4px;
+}
+
+.symbol {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 24px;
+  padding: 16px;
+  background: #f8f9fa;
+  border-radius: 8px;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+}
+
+.legend-color {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+}
+
+.element-detail {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  animation: fadeIn 0.2s;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.element-detail-content {
+  background: white;
+  border-radius: 12px;
+  max-width: 400px;
+  width: 90%;
+  overflow: hidden;
+  position: relative;
+  animation: slideUp 0.2s;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.close-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 255, 255, 0.8);
+  border: none;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.close-btn:hover {
+  background: white;
+}
+
+.detail-header {
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.detail-number {
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.detail-symbol {
+  font-size: 48px;
+  font-weight: 700;
+}
+
+.detail-name {
+  font-size: 20px;
+  font-weight: 600;
+}
+
+.detail-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.detail-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid #eee;
+}
+
+.detail-label {
+  color: #666;
+  font-weight: 500;
+}
+
+.detail-value {
+  font-weight: 600;
+}
+
+@media (max-width: 1200px) {
+  .element {
+    min-width: 40px;
+    min-height: 40px;
+  }
+
+  .symbol {
+    font-size: 14px;
+  }
+
+  .atomic-number {
+    font-size: 8px;
+  }
+}
